@@ -27,4 +27,5 @@ local function print_plugins()
     end
   end
 end
-print_plugins()
+
+-- print_plugins()
