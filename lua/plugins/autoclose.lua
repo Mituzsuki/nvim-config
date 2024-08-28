@@ -4,7 +4,7 @@ return {
     require("autoclose").setup({
       autotag = {
         enable = true,
-      }
+      },
     })
-  end
+  end,
 }
