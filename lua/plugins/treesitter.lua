@@ -26,6 +26,7 @@ return {
 					"bash",
 					"c_sharp",
           "tsx",
+          "python",
 				},
 				highlight = { enabled = true },
 				indent = { enabled = true },
