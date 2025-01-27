@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "csharp_ls", "powershell_es", "jedi_language_server", "eslint" },
+        ensure_installed = { "lua_ls", "ts_ls", "csharp_ls", "powershell_es", "jedi_language_server", "eslint" },
       })
     end,
   },
@@ -23,7 +23,7 @@ return {
 
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.html.setup({ capabilities = capabilities })
-      lspconfig.tsserver.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.csharp_ls.setup({ capabilities = capabilities })
       lspconfig.powershell_es.setup({ capabilities = capabilities })
       lspconfig.python.setup({ capabilities = capabilities })
