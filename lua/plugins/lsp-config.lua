@@ -33,7 +33,39 @@ return {
             underline = true,
             virtual_text = {
               spacing = 5,
-              severity_limit = "Warning",
+              severity_limit = vim.diagnostic.severity.WARN,
+            },
+            update_in_insert = true,
+          })
+
+      -- I'll be honest chat gpt wrote this section of the config..
+      -- Add eslint-lsp configuration
+      lspconfig.eslint.setup({
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          -- Automatically format files on save if eslint is attached
+          if client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = bufnr,
+              command = "EslintFixAll", -- Runs the eslint auto-fix command
+            })
+          end
+        end,
+        settings = {
+          -- Optional: adjust eslint behavior
+          eslint = {
+            packageManager = "yarn", -- Or "npm" or "pnpm"
+          },
+        },
+      })
+
+      -- Customize diagnostic handlers
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            underline = true,
+            virtual_text = {
+              spacing = 5,
+              severity_limit = vim.diagnostic.severity.WARN,
             },
             update_in_insert = true,
           })
