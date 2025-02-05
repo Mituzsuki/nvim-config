@@ -11,6 +11,7 @@ return {
 				"html",
 				"typescript",
 				"javascript",
+        "python"
 			},
 		},
 		config = function()
