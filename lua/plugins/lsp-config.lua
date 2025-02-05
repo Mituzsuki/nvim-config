@@ -74,15 +74,15 @@ return {
 			lspconfig.powershell_es.setup({ capabilities = capabilities })
 			lspconfig.python.setup({ capabilities = capabilities })
 
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					underline = true,
-					virtual_text = {
-						spacing = 5,
-						severity_limit = vim.diagnostic.severity.WARN,
-					},
-					update_in_insert = true,
-				})
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            underline = true,
+            virtual_text = {
+              spacing = 5,
+              severity = { min = vim.diagnostic.severity.warn },
+            },
+            update_in_insert = true,
+          })
 
 			-- I'll be honest chat gpt wrote this section of the config..
 			-- Add eslint-lsp configuration
@@ -104,18 +104,6 @@ return {
 					},
 				},
 			})
-
-			-- Customize diagnostic handlers
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					underline = true,
-					virtual_text = {
-						spacing = 5,
-						severity_limit = vim.diagnostic.severity.WARN,
-					},
-					update_in_insert = true,
-				})
-
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
