@@ -33,7 +33,7 @@ return {
             underline = true,
             virtual_text = {
               spacing = 5,
-              severity_limit = vim.diagnostic.severity.WARN,
+              severity = { min = vim.diagnostic.severity.warn },
             },
             update_in_insert = true,
           })
@@ -65,7 +65,7 @@ return {
             underline = true,
             virtual_text = {
               spacing = 5,
-              severity_limit = vim.diagnostic.severity.WARN,
+              severity = { min = vim.diagnostic.severity.warn },
             },
             update_in_insert = true,
           })
