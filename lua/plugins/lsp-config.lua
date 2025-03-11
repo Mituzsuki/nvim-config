@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "csharp_ls", "powershell_es", "jedi_language_server", "eslint" },
+        ensure_installed = { "lua_ls", "ts_ls", "csharp_ls", "powershell_es", "jedi_language_server", "eslint", },
       })
     end,
   },
@@ -26,7 +26,7 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.csharp_ls.setup({ capabilities = capabilities })
       lspconfig.powershell_es.setup({ capabilities = capabilities })
-      lspconfig.python.setup({ capabilities = capabilities })
+      lspconfig.jedi_language_server.setup({ capabilities = capabilities })
 
       vim.lsp.handlers["textDocument/publishDiagnostics"] =
           vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
