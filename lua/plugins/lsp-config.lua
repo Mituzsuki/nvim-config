@@ -1,5 +1,4 @@
 return {
-
   {
     "williamboman/mason.nvim",
     config = function()
@@ -26,7 +25,6 @@ return {
         ensure_installed = { "netcoredbg" }, -- Automatically install netcoredbg
         automatic_setup = true,          -- Automatically configure DAP for installed debuggers
       })
-
       -- Optional: Manually configure dap if needed
       local dap = require("dap")
       dap.adapters.coreclr = {
@@ -93,7 +91,6 @@ return {
           }
         }
       })
-
       vim.lsp.handlers["textDocument/publishDiagnostics"] =
           vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             underline = true,
