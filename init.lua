@@ -1,3 +1,31 @@
+local function has_exec(exec)
+  return vim.fn.executable(exec) == 1
+end
+
+local required = {
+  { "dotnet", "Please install the .NET SDK (dotnet)." },
+  { "rg", "Install ripgrep (rg) for Telescope live_grep." },
+  { "fd", "Install fd for better file searching." },
+}
+
+local has_missing = false;
+
+for _, dep in ipairs(required) do
+  if not has_exec(dep[1]) then
+    has_missing = true;
+    vim.notify("Missing dependency: " .. dep[1] .. "\n" .. dep[2], vim.log.levels.WARN)
+  end
+end
+
+if(has_missing) then
+ local sys = vim.loop.os_uname().sysname;
+ if(sys == 'Windows_NT') then
+  print("Run bootstrap.ps1 to ensure deps installed.")
+ else
+  print("Run bootstrap.sh to ensure deps installed.")
+ end
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
